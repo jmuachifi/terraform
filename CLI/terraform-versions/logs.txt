@@ -1,0 +1,529 @@
+2021-10-02T18:42:47.911+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:42:47.948+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:42:47.957+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8294
+2021-10-02T18:42:47.957+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:42:49.538+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:42:49.536+0100
+2021-10-02T18:42:49.638+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:42:49.638+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin129910481 network=unix timestamp=2021-10-02T18:42:49.638+0100
+2021-10-02T18:42:49.735+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:42:49.746+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:42:49.855+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8294
+2021-10-02T18:42:49.856+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:42:49.862+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:42:49.902+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:42:49.913+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8311
+2021-10-02T18:42:49.913+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:42:50.283+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:42:50.283+0100
+2021-10-02T18:42:50.361+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin360821934 network=unix timestamp=2021-10-02T18:42:50.361+0100
+2021-10-02T18:42:50.361+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:42:50.415+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:42:50.426+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:42:50.428+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8311
+2021-10-02T18:42:50.429+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:42:50.436+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:42:50.472+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:42:50.482+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8324
+2021-10-02T18:42:50.482+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:42:50.792+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:42:50.792+0100
+2021-10-02T18:42:50.866+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin963156535 network=unix timestamp=2021-10-02T18:42:50.866+0100
+2021-10-02T18:42:50.867+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:42:50.916+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:42:50.922+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:42:50.961+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:42:50.970+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8336
+2021-10-02T18:42:50.970+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:42:52.630+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:42:52.623+0100
+2021-10-02T18:42:52.739+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:42:52.739+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin648949663 network=unix timestamp=2021-10-02T18:42:52.739+0100
+2021-10-02T18:42:52.825+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:42:52.840+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:42:52.842+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8324
+2021-10-02T18:42:52.843+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:42:52.843+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:42:53.036+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8336
+2021-10-02T18:42:53.037+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:42:53.045+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:42:53.085+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:42:53.094+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8351
+2021-10-02T18:42:53.095+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:42:54.753+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:42:54.751+0100
+2021-10-02T18:42:54.844+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:42:54.844+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: network=unix address=/tmp/plugin240750078 timestamp=2021-10-02T18:42:54.844+0100
+2021-10-02T18:42:54.931+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:42:54.934+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:42:54.952+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:42:54.978+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:42:54.983+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8367
+2021-10-02T18:42:54.984+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:42:55.523+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:42:55.522+0100
+2021-10-02T18:42:55.590+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin250645946 network=unix timestamp=2021-10-02T18:42:55.590+0100
+2021-10-02T18:42:55.591+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:42:55.642+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:42:55.650+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:55 [INFO] No assume_role block read from configuration
+2021-10-02T18:42:55.650+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:55 [INFO] Building AWS auth structure
+2021-10-02T18:42:55.667+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:42:55.669+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:55 [INFO] Setting AWS metadata API timeout to 100ms
+2021-10-02T18:42:55.669+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8367
+2021-10-02T18:42:55.670+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:42:56.370+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:56 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2021-10-02T18:42:56.371+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:56 [INFO] AWS Auth provider used: "StaticProvider"
+2021-10-02T18:42:56.372+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:56 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:42:57.227+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:57 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:42:59.056+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:42:59 [DEBUG] Reading AMI: {
+2021-10-02T18:42:59.057+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Filters: [{
+2021-10-02T18:42:59.057+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Name: "name",
+2021-10-02T18:42:59.057+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Values: ["amzn2-ami-hvm-*-x86_64-gp2"]
+2021-10-02T18:42:59.057+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     }],
+2021-10-02T18:42:59.058+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Owners: ["amazon"]
+2021-10-02T18:42:59.058+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: }
+2021-10-02T18:43:00.712+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:00 [DEBUG] aws_ami - adding block device mapping: map[device_name:/dev/xvda ebs:map[delete_on_termination:true encrypted:false iops:0 snapshot_id:snap-080a67170bf51bff7 volume_size:8 volume_type:gp2] virtual_name:]
+2021-10-02T18:43:00.769+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8351
+2021-10-02T18:43:00.770+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:43:03.266+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:43:03.305+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:43:03.316+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8381
+2021-10-02T18:43:03.317+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:43:03.710+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:43:03.710+0100
+2021-10-02T18:43:03.781+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin344357780 network=unix timestamp=2021-10-02T18:43:03.781+0100
+2021-10-02T18:43:03.781+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:43:03.833+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:43:03.839+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:43:03.877+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:43:03.886+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8394
+2021-10-02T18:43:03.886+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:43:05.649+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:43:05.647+0100
+2021-10-02T18:43:05.755+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin656367905 network=unix timestamp=2021-10-02T18:43:05.755+0100
+2021-10-02T18:43:05.756+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:43:05.843+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:43:05.861+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:43:05.976+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:43:05.979+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8381
+2021-10-02T18:43:05.979+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:43:06.028+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:06 [INFO] No assume_role block read from configuration
+2021-10-02T18:43:06.029+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:06 [INFO] Building AWS auth structure
+2021-10-02T18:43:06.044+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:06 [INFO] Setting AWS metadata API timeout to 100ms
+2021-10-02T18:43:06.847+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:06 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2021-10-02T18:43:06.848+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:06 [INFO] AWS Auth provider used: "StaticProvider"
+2021-10-02T18:43:06.849+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:06 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:43:07.494+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:07 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:43:09.101+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "root_block_device" from ComputedKeys
+2021-10-02T18:43:09.101+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "security_groups" from ComputedKeys
+2021-10-02T18:43:09.102+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "ipv6_addresses" from ComputedKeys
+2021-10-02T18:43:09.102+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "ebs_block_device" from ComputedKeys
+2021-10-02T18:43:09.102+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "vpc_security_group_ids" from ComputedKeys
+2021-10-02T18:43:09.102+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "network_interface" from ComputedKeys
+2021-10-02T18:43:09.102+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "network_interface" from ComputedKeys
+2021-10-02T18:43:09.102+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "volume_tags" from ComputedKeys
+2021-10-02T18:43:09.103+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] setting computed for "ephemeral_block_device" from ComputedKeys
+2021-10-02T18:43:09.104+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] Matching ^aws: with Name
+2021-10-02T18:43:09.112+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] Run configuration: {
+2021-10-02T18:43:09.112+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   DisableApiTermination: false,
+2021-10-02T18:43:09.112+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   EbsOptimized: false,
+2021-10-02T18:43:09.113+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   IamInstanceProfile: {
+2021-10-02T18:43:09.113+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     Name: ""
+2021-10-02T18:43:09.113+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   },
+2021-10-02T18:43:09.113+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   ImageId: "ami-0c2d06d50ce30b442",
+2021-10-02T18:43:09.113+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   InstanceType: "t2.micro",
+2021-10-02T18:43:09.113+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   MaxCount: 1,
+2021-10-02T18:43:09.114+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   MinCount: 1,
+2021-10-02T18:43:09.114+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Monitoring: {
+2021-10-02T18:43:09.114+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     Enabled: false
+2021-10-02T18:43:09.114+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   },
+2021-10-02T18:43:09.114+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Placement: {
+2021-10-02T18:43:09.114+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     AvailabilityZone: "",
+2021-10-02T18:43:09.115+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     GroupName: ""
+2021-10-02T18:43:09.115+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   },
+2021-10-02T18:43:09.115+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   TagSpecifications: [{
+2021-10-02T18:43:09.115+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       ResourceType: "instance",
+2021-10-02T18:43:09.115+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Tags: [{
+2021-10-02T18:43:09.115+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:           Key: "Name",
+2021-10-02T18:43:09.115+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:           Value: "devoted-piglet"
+2021-10-02T18:43:09.116+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:         }]
+2021-10-02T18:43:09.116+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     }],
+2021-10-02T18:43:09.116+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   UserData: "IyEvYmluL2Jhc2gNCnl1bSB1cGRhdGUgLXkNCnl1bSAteSByZW1vdmUgaHR0cGQNCnl1bSAteSByZW1vdmUgaHR0cGQtdG9vbHMNCnl1bSBpbnN0YWxsIC15IGh0dHBkMjQgcGhwNzIgbXlzcWw1Ny1zZXJ2ZXIgcGhwNzItbXlzcWxuZA0Kc2VydmljZSBodHRwZCBzdGFydA0KY2hrY29uZmlnIGh0dHBkIG9uDQoNCnVzZXJtb2QgLWEgLUcgYXBhY2hlIGVjMi11c2VyDQpjaG93biAtUiBlYzItdXNlcjphcGFjaGUgL3Zhci93d3cNCmNobW9kIDI3NzUgL3Zhci93d3cNCmZpbmQgL3Zhci93d3cgLXR5cGUgZCAtZXhlYyBjaG1vZCAyNzc1IHt9IFw7DQpmaW5kIC92YXIvd3d3IC10eXBlIGYgLWV4ZWMgY2htb2QgMDY2NCB7fSBcOw0KY2QgL3Zhci93d3cvaHRtbA0KY3VybCBodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQgLW8gaW5kZXguaHRtbA0KY3VybCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaGFzaGljb3JwL2xlYXJuLXRlcnJhbWluby9tYXN0ZXIvaW5kZXgucGhwIC1P"
+2021-10-02T18:43:09.116+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: }
+2021-10-02T18:43:09.116+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:43:09 [DEBUG] Waiting for state to become: [success]
+2021-10-02T18:43:10.769+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8394
+2021-10-02T18:43:10.769+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:10.247+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:10.284+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:44:10.294+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8436
+2021-10-02T18:44:10.294+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:44:11.859+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:44:11.857+0100
+2021-10-02T18:44:11.952+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:11.952+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin550997983 network=unix timestamp=2021-10-02T18:44:11.951+0100
+2021-10-02T18:44:12.042+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:12.053+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:44:12.155+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8436
+2021-10-02T18:44:12.155+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:12.160+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:12.196+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:44:12.205+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8452
+2021-10-02T18:44:12.205+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:44:12.596+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:44:12.596+0100
+2021-10-02T18:44:12.668+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: network=unix address=/tmp/plugin359903019 timestamp=2021-10-02T18:44:12.667+0100
+2021-10-02T18:44:12.668+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:12.721+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:12.731+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:44:12.734+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8452
+2021-10-02T18:44:12.734+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:12.742+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:12.779+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:44:12.789+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8464
+2021-10-02T18:44:12.789+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:44:13.233+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:44:13.233+0100
+2021-10-02T18:44:13.302+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin707439447 network=unix timestamp=2021-10-02T18:44:13.302+0100
+2021-10-02T18:44:13.302+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:13.356+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:13.361+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:13.405+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:44:13.412+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8478
+2021-10-02T18:44:13.412+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:44:14.942+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:44:14.940+0100
+2021-10-02T18:44:15.046+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:15.046+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin066595181 network=unix timestamp=2021-10-02T18:44:15.046+0100
+2021-10-02T18:44:15.139+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:15.150+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:44:15.154+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:44:15.156+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8464
+2021-10-02T18:44:15.156+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:15.320+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8478
+2021-10-02T18:44:15.321+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:15.328+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:15.365+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:44:15.374+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8493
+2021-10-02T18:44:15.374+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:44:17.122+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:44:17.120+0100
+2021-10-02T18:44:17.214+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:17.214+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin722587916 network=unix timestamp=2021-10-02T18:44:17.214+0100
+2021-10-02T18:44:17.303+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:17.307+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:17.326+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:44:17.349+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:44:17.355+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8508
+2021-10-02T18:44:17.356+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:44:17.780+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:44:17.780+0100
+2021-10-02T18:44:17.846+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin994395479 network=unix timestamp=2021-10-02T18:44:17.846+0100
+2021-10-02T18:44:17.847+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:17.899+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:17.911+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:17 [INFO] No assume_role block read from configuration
+2021-10-02T18:44:17.912+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:17 [INFO] Building AWS auth structure
+2021-10-02T18:44:17.925+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:44:17.928+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8508
+2021-10-02T18:44:17.928+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:17.937+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:17 [INFO] Setting AWS metadata API timeout to 100ms
+2021-10-02T18:44:18.671+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:18 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2021-10-02T18:44:18.673+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:18 [INFO] AWS Auth provider used: "StaticProvider"
+2021-10-02T18:44:18.674+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:18 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:44:19.489+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:19 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:44:21.182+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:21 [DEBUG] Reading AMI: {
+2021-10-02T18:44:21.182+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Filters: [{
+2021-10-02T18:44:21.182+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Name: "name",
+2021-10-02T18:44:21.182+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Values: ["amzn2-ami-hvm-*-x86_64-gp2"]
+2021-10-02T18:44:21.182+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     }],
+2021-10-02T18:44:21.183+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Owners: ["amazon"]
+2021-10-02T18:44:21.183+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: }
+2021-10-02T18:44:23.106+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:23 [DEBUG] aws_ami - adding block device mapping: map[device_name:/dev/xvda ebs:map[delete_on_termination:true encrypted:false iops:0 snapshot_id:snap-080a67170bf51bff7 volume_size:8 volume_type:gp2] virtual_name:]
+2021-10-02T18:44:23.158+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8493
+2021-10-02T18:44:23.158+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:25.880+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:25.922+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:44:25.932+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8522
+2021-10-02T18:44:25.932+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:44:27.792+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:44:27.790+0100
+2021-10-02T18:44:27.884+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:27.884+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin614660509 network=unix timestamp=2021-10-02T18:44:27.884+0100
+2021-10-02T18:44:27.969+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:27.973+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:44:27.986+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:44:28.016+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:44:28.023+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8537
+2021-10-02T18:44:28.024+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:44:28.429+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:44:28.429+0100
+2021-10-02T18:44:28.505+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: network=unix address=/tmp/plugin385317512 timestamp=2021-10-02T18:44:28.505+0100
+2021-10-02T18:44:28.506+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:44:28.557+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:44:28.564+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:28 [INFO] No assume_role block read from configuration
+2021-10-02T18:44:28.564+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:28 [INFO] Building AWS auth structure
+2021-10-02T18:44:28.576+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:28 [INFO] Setting AWS metadata API timeout to 100ms
+2021-10-02T18:44:28.576+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:44:28.578+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8537
+2021-10-02T18:44:28.578+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:44:29.266+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:29 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2021-10-02T18:44:29.267+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:29 [INFO] AWS Auth provider used: "StaticProvider"
+2021-10-02T18:44:29.268+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:29 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:44:29.985+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:29 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:44:41.892+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "vpc_security_group_ids" from ComputedKeys
+2021-10-02T18:44:41.892+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "ephemeral_block_device" from ComputedKeys
+2021-10-02T18:44:41.892+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "network_interface" from ComputedKeys
+2021-10-02T18:44:41.892+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "ipv6_addresses" from ComputedKeys
+2021-10-02T18:44:41.893+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "root_block_device" from ComputedKeys
+2021-10-02T18:44:41.893+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "ebs_block_device" from ComputedKeys
+2021-10-02T18:44:41.893+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "volume_tags" from ComputedKeys
+2021-10-02T18:44:41.893+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "network_interface" from ComputedKeys
+2021-10-02T18:44:41.894+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] setting computed for "security_groups" from ComputedKeys
+2021-10-02T18:44:41.900+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] Matching ^aws: with Name
+2021-10-02T18:44:41.908+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] Run configuration: {
+2021-10-02T18:44:41.908+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   DisableApiTermination: false,
+2021-10-02T18:44:41.909+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   EbsOptimized: false,
+2021-10-02T18:44:41.909+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   IamInstanceProfile: {
+2021-10-02T18:44:41.909+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     Name: ""
+2021-10-02T18:44:41.909+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   },
+2021-10-02T18:44:41.909+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   ImageId: "ami-0c2d06d50ce30b442",
+2021-10-02T18:44:41.909+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   InstanceType: "t2.micro",
+2021-10-02T18:44:41.910+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   MaxCount: 1,
+2021-10-02T18:44:41.910+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   MinCount: 1,
+2021-10-02T18:44:41.910+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Monitoring: {
+2021-10-02T18:44:41.910+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     Enabled: false
+2021-10-02T18:44:41.911+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   },
+2021-10-02T18:44:41.911+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Placement: {
+2021-10-02T18:44:41.911+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     AvailabilityZone: "",
+2021-10-02T18:44:41.912+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     GroupName: ""
+2021-10-02T18:44:41.912+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   },
+2021-10-02T18:44:41.912+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   TagSpecifications: [{
+2021-10-02T18:44:41.913+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       ResourceType: "instance",
+2021-10-02T18:44:41.913+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Tags: [{
+2021-10-02T18:44:41.914+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:           Key: "Name",
+2021-10-02T18:44:41.914+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:           Value: "devoted-piglet"
+2021-10-02T18:44:41.914+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:         }]
+2021-10-02T18:44:41.914+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     }],
+2021-10-02T18:44:41.914+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   UserData: "IyEvYmluL2Jhc2gNCnl1bSB1cGRhdGUgLXkNCnl1bSAteSByZW1vdmUgaHR0cGQNCnl1bSAteSByZW1vdmUgaHR0cGQtdG9vbHMNCnl1bSBpbnN0YWxsIC15IGh0dHBkMjQgcGhwNzIgbXlzcWw1Ny1zZXJ2ZXIgcGhwNzItbXlzcWxuZA0Kc2VydmljZSBodHRwZCBzdGFydA0KY2hrY29uZmlnIGh0dHBkIG9uDQoNCnVzZXJtb2QgLWEgLUcgYXBhY2hlIGVjMi11c2VyDQpjaG93biAtUiBlYzItdXNlcjphcGFjaGUgL3Zhci93d3cNCmNobW9kIDI3NzUgL3Zhci93d3cNCmZpbmQgL3Zhci93d3cgLXR5cGUgZCAtZXhlYyBjaG1vZCAyNzc1IHt9IFw7DQpmaW5kIC92YXIvd3d3IC10eXBlIGYgLWV4ZWMgY2htb2QgMDY2NCB7fSBcOw0KY2QgL3Zhci93d3cvaHRtbA0KY3VybCBodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQgLW8gaW5kZXguaHRtbA0KY3VybCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaGFzaGljb3JwL2xlYXJuLXRlcnJhbWluby9tYXN0ZXIvaW5kZXgucGhwIC1P"
+2021-10-02T18:44:41.914+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: }
+2021-10-02T18:44:41.915+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:41 [DEBUG] Waiting for state to become: [success]
+2021-10-02T18:44:44.096+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:44 [INFO] Instance ID: i-04c88bf64c198b423
+2021-10-02T18:44:44.096+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:44 [DEBUG] Waiting for instance (i-04c88bf64c198b423) to become running
+2021-10-02T18:44:44.096+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:44:44 [DEBUG] Waiting for state to become: [running]
+2021-10-02T18:45:05.421+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:45:05 [TRACE] Waiting 3s before next try
+2021-10-02T18:45:09.319+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:45:09 [TRACE] Waiting 6s before next try
+2021-10-02T18:45:17.138+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:45:17 [DEBUG] Matching ^aws: with Name
+2021-10-02T18:45:20.046+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:45:20 [DEBUG] Setting Security Group IDs: []string{"sg-26b4f62f"}
+2021-10-02T18:45:20.047+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:45:20 [DEBUG] Setting Security Group Names: []string{"default"}
+2021-10-02T18:45:34.298+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8522
+2021-10-02T18:45:34.298+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:46:48.571+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:46:48.611+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:46:48.620+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8576
+2021-10-02T18:46:48.621+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:46:50.500+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:46:50.498+0100
+2021-10-02T18:46:50.605+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:46:50.605+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin068046447 network=unix timestamp=2021-10-02T18:46:50.604+0100
+2021-10-02T18:46:50.692+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:46:50.702+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:46:50.794+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8576
+2021-10-02T18:46:50.795+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:46:50.802+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:46:50.838+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:46:50.847+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8591
+2021-10-02T18:46:50.847+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:46:51.173+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:46:51.173+0100
+2021-10-02T18:46:51.232+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin789351626 network=unix timestamp=2021-10-02T18:46:51.232+0100
+2021-10-02T18:46:51.233+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:46:51.289+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:46:51.301+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:46:51.304+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8591
+2021-10-02T18:46:51.304+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:46:51.309+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:46:51.347+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:46:51.357+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8604
+2021-10-02T18:46:51.357+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:46:51.750+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:46:51.750+0100
+2021-10-02T18:46:51.812+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin021559103 network=unix timestamp=2021-10-02T18:46:51.811+0100
+2021-10-02T18:46:51.812+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:46:51.868+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:46:51.873+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:46:51.910+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:46:51.918+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8615
+2021-10-02T18:46:51.918+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:46:53.700+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:46:53.697+0100
+2021-10-02T18:46:53.794+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:46:53.794+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin534079598 network=unix timestamp=2021-10-02T18:46:53.794+0100
+2021-10-02T18:46:53.881+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:46:53.927+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:46:53.932+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:46:53.934+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8604
+2021-10-02T18:46:53.934+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:46:54.092+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8615
+2021-10-02T18:46:54.093+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:46:54.100+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:46:54.137+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:46:54.147+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8631
+2021-10-02T18:46:54.147+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:46:54.543+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:46:54.543+0100
+2021-10-02T18:46:54.603+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin182239950 network=unix timestamp=2021-10-02T18:46:54.603+0100
+2021-10-02T18:46:54.604+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:46:54.658+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:46:54.664+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:46:54.702+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:46:54.711+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8643
+2021-10-02T18:46:54.712+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:46:56.420+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:46:56.417+0100
+2021-10-02T18:46:56.513+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:46:56.513+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin334368766 network=unix timestamp=2021-10-02T18:46:56.512+0100
+2021-10-02T18:46:56.614+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:46:56.622+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:46:56.625+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8631
+2021-10-02T18:46:56.625+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:46:56.625+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:46:56.791+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:46:56 [INFO] No assume_role block read from configuration
+2021-10-02T18:46:56.791+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:46:56 [INFO] Building AWS auth structure
+2021-10-02T18:46:56.811+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:46:56 [INFO] Setting AWS metadata API timeout to 100ms
+2021-10-02T18:46:57.529+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:46:57 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2021-10-02T18:46:57.530+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:46:57 [INFO] AWS Auth provider used: "StaticProvider"
+2021-10-02T18:46:57.530+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:46:57 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:46:58.473+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:46:58 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:47:00.151+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:47:00 [DEBUG] Reading AMI: {
+2021-10-02T18:47:00.152+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Filters: [{
+2021-10-02T18:47:00.152+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Name: "name",
+2021-10-02T18:47:00.152+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Values: ["amzn2-ami-hvm-*-x86_64-gp2"]
+2021-10-02T18:47:00.152+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     }],
+2021-10-02T18:47:00.152+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Owners: ["amazon"]
+2021-10-02T18:47:00.153+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: }
+2021-10-02T18:47:01.958+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:47:01 [DEBUG] aws_ami - adding block device mapping: map[device_name:/dev/xvda ebs:map[delete_on_termination:true encrypted:false iops:0 snapshot_id:snap-080a67170bf51bff7 volume_size:8 volume_type:gp2] virtual_name:]
+2021-10-02T18:47:02.931+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:47:02 [DEBUG] Matching ^aws: with Name
+2021-10-02T18:47:05.709+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:47:05 [DEBUG] Setting Security Group IDs: []string{"sg-26b4f62f"}
+2021-10-02T18:47:05.709+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:47:05 [DEBUG] Setting Security Group Names: []string{"default"}
+2021-10-02T18:47:40.392+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:47:40 [DEBUG] Instance Diff is nil in SimpleDiff()
+2021-10-02T18:47:40.401+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8643
+2021-10-02T18:47:40.401+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:50:50.376+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:50:50.415+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:50:50.427+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8688
+2021-10-02T18:50:50.427+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:50:52.445+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:50:52.442+0100
+2021-10-02T18:50:52.542+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:50:52.542+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin777994723 network=unix timestamp=2021-10-02T18:50:52.542+0100
+2021-10-02T18:50:52.643+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:50:52.668+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:50:52.798+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8688
+2021-10-02T18:50:52.798+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:50:52.804+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:50:52.850+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:50:52.858+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8704
+2021-10-02T18:50:52.859+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:50:53.322+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:50:53.322+0100
+2021-10-02T18:50:53.388+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin172901603 network=unix timestamp=2021-10-02T18:50:53.387+0100
+2021-10-02T18:50:53.388+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:50:53.440+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:50:53.451+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:50:53.454+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8704
+2021-10-02T18:50:53.454+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:50:53.462+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:50:53.499+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:50:53.506+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8716
+2021-10-02T18:50:53.506+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:50:53.962+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:50:53.962+0100
+2021-10-02T18:50:54.023+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin084957151 network=unix timestamp=2021-10-02T18:50:54.023+0100
+2021-10-02T18:50:54.024+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:50:54.077+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:50:54.083+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:50:54.124+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:50:54.131+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8727
+2021-10-02T18:50:54.132+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:50:55.974+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:50:55.972+0100
+2021-10-02T18:50:56.066+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: network=unix address=/tmp/plugin648877962 timestamp=2021-10-02T18:50:56.066+0100
+2021-10-02T18:50:56.066+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:50:56.150+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:50:56.150+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:50:56.153+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8716
+2021-10-02T18:50:56.153+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:50:56.164+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:50:56.333+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8727
+2021-10-02T18:50:56.333+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:50:56.339+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:50:56.376+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:50:56.385+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8742
+2021-10-02T18:50:56.385+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:50:56.774+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:50:56.774+0100
+2021-10-02T18:50:56.847+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin560092809 network=unix timestamp=2021-10-02T18:50:56.847+0100
+2021-10-02T18:50:56.847+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:50:56.912+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:50:56.916+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:50:56.954+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:50:56.962+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8754
+2021-10-02T18:50:56.963+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:50:58.879+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:50:58.877+0100
+2021-10-02T18:50:58.984+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:50:58.984+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin652127157 network=unix timestamp=2021-10-02T18:50:58.984+0100
+2021-10-02T18:50:59.074+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:50:59.091+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:50:59.095+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8742
+2021-10-02T18:50:59.095+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:50:59.105+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:50:59.328+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:50:59 [INFO] No assume_role block read from configuration
+2021-10-02T18:50:59.329+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:50:59 [INFO] Building AWS auth structure
+2021-10-02T18:50:59.345+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:50:59 [INFO] Setting AWS metadata API timeout to 100ms
+2021-10-02T18:51:00.139+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:00 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2021-10-02T18:51:00.140+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:00 [INFO] AWS Auth provider used: "StaticProvider"
+2021-10-02T18:51:00.140+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:00 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:51:00.908+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:00 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:51:02.672+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:02 [DEBUG] Reading AMI: {
+2021-10-02T18:51:02.672+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Filters: [{
+2021-10-02T18:51:02.672+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Name: "name",
+2021-10-02T18:51:02.673+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:       Values: ["amzn2-ami-hvm-*-x86_64-gp2"]
+2021-10-02T18:51:02.673+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:     }],
+2021-10-02T18:51:02.673+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4:   Owners: ["amazon"]
+2021-10-02T18:51:02.673+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: }
+2021-10-02T18:51:15.001+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:15 [DEBUG] aws_ami - adding block device mapping: map[device_name:/dev/xvda ebs:map[delete_on_termination:true encrypted:false iops:0 snapshot_id:snap-080a67170bf51bff7 volume_size:8 volume_type:gp2] virtual_name:]
+2021-10-02T18:51:15.995+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:15 [DEBUG] Matching ^aws: with Name
+2021-10-02T18:51:18.849+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:18 [DEBUG] Setting Security Group IDs: []string{"sg-26b4f62f"}
+2021-10-02T18:51:18.849+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:18 [DEBUG] Setting Security Group Names: []string{"default"}
+2021-10-02T18:51:22.921+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:22 [DEBUG] Instance Diff is nil in SimpleDiff()
+2021-10-02T18:51:22.930+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8754
+2021-10-02T18:51:22.931+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:51:22.937+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:51:22.976+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:51:22.985+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8771
+2021-10-02T18:51:22.985+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:51:24.843+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:51:24.841+0100
+2021-10-02T18:51:24.943+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:51:24.943+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin227762918 network=unix timestamp=2021-10-02T18:51:24.943+0100
+2021-10-02T18:51:25.053+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:51:25.057+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:51:25.089+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:51:25.100+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:51:25.107+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8786
+2021-10-02T18:51:25.108+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:51:25.538+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:51:25.537+0100
+2021-10-02T18:51:25.603+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:51:25.603+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin860453293 network=unix timestamp=2021-10-02T18:51:25.603+0100
+2021-10-02T18:51:25.661+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:51:25.795+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8771
+2021-10-02T18:51:25.795+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:51:25.796+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:51:25.798+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8786
+2021-10-02T18:51:25.799+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:51:32.201+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:51:32.241+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4]
+2021-10-02T18:51:32.250+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8799
+2021-10-02T18:51:32.250+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4
+2021-10-02T18:51:33.979+0100 [INFO]  provider.terraform-provider-aws_v2.13.0_x4: configuring server automatic mTLS: timestamp=2021-10-02T18:51:33.977+0100
+2021-10-02T18:51:34.072+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: plugin address: address=/tmp/plugin499623650 network=unix timestamp=2021-10-02T18:51:34.072+0100
+2021-10-02T18:51:34.072+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:51:34.186+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:51:34.189+0100 [INFO]  provider: configuring client automatic mTLS
+2021-10-02T18:51:34.207+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2021-10-02T18:51:34.268+0100 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5]
+2021-10-02T18:51:34.278+0100 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8814
+2021-10-02T18:51:34.278+0100 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5
+2021-10-02T18:51:34.713+0100 [INFO]  provider.terraform-provider-random_v3.1.0_x5: configuring server automatic mTLS: timestamp=2021-10-02T18:51:34.713+0100
+2021-10-02T18:51:34.786+0100 [DEBUG] provider.terraform-provider-random_v3.1.0_x5: plugin address: address=/tmp/plugin077143733 network=unix timestamp=2021-10-02T18:51:34.786+0100
+2021-10-02T18:51:34.787+0100 [DEBUG] provider: using plugin: version=5
+2021-10-02T18:51:34.839+0100 [TRACE] provider.stdio: waiting for stdio data
+2021-10-02T18:51:34.845+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:34 [INFO] No assume_role block read from configuration
+2021-10-02T18:51:34.845+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:34 [INFO] Building AWS auth structure
+2021-10-02T18:51:34.860+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:34 [INFO] Setting AWS metadata API timeout to 100ms
+2021-10-02T18:51:35.561+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:35 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2021-10-02T18:51:35.562+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:35 [INFO] AWS Auth provider used: "StaticProvider"
+2021-10-02T18:51:35.562+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:35 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:51:36.263+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:36 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2021-10-02T18:51:38.044+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:38 [INFO] Terminating instance: i-04c88bf64c198b423
+2021-10-02T18:51:39.072+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:39 [DEBUG] Waiting for instance (i-04c88bf64c198b423) to become terminated
+2021-10-02T18:51:39.072+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:39 [DEBUG] Waiting for state to become: [terminated]
+2021-10-02T18:51:50.099+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:50 [TRACE] Waiting 3s before next try
+2021-10-02T18:51:54.497+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:51:54 [TRACE] Waiting 6s before next try
+2021-10-02T18:52:01.394+0100 [DEBUG] provider.terraform-provider-aws_v2.13.0_x4: 2021/10/02 18:52:01 [TRACE] Waiting 10s before next try
+2021-10-02T18:52:12.510+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/2.13.0/linux_amd64/terraform-provider-aws_v2.13.0_x4 pid=8799
+2021-10-02T18:52:12.511+0100 [DEBUG] provider: plugin exited
+2021-10-02T18:52:12.563+0100 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-10-02T18:52:12.566+0100 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/linux_amd64/terraform-provider-random_v3.1.0_x5 pid=8814
+2021-10-02T18:52:12.566+0100 [DEBUG] provider: plugin exited
