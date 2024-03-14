@@ -1,7 +1,7 @@
 # Tutorial - Learn Terraform
 
 ## Installing Terraform
-<p>To install latest Terraform version, make it by clicking [here](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)</p> <br>
+To install latest Terraform version, make it by clicking [here](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) <br>
 ## Terraform - Format and Validate Terraform code
 ```
 terraform fmt #format code per HCL canonical standard
