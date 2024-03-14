@@ -1,7 +1,7 @@
 provider "aws" {
   region = var.region
-  access_key = "AKIATHUGHAIVXJEEIH5M"
-  secret_key = "NdYGOSUW+MiQz1YSbtXi9Xp/tNBPyJc+YlMc/GXC"
+  access_key = "YOUR_ACCESS_KEY_HERE"
+  secret_key = "YOUR_SECRET_KEY_HERE"
 }
 
 resource "aws_s3_bucket" "bucket" {
