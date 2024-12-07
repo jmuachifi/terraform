@@ -1,0 +1,30 @@
+# # modules/eks/main.tf
+# module "eks" {
+#   source          = "terraform-aws-modules/eks/aws"
+#   cluster_name    = "${var.project_name}-eks"
+#   cluster_version = "1.21"
+#   subnet_ids      = module.vpc.private_subnets
+#   vpc_id          = module.vpc.vpc_id
+
+#     # EKS Managed Node Group(s)
+#   eks_managed_node_group_defaults = {
+#     instance_types = ["m6i.large", "m5.large", "m5n.large", "m5zn.large"]
+#   }
+#   eks_managed_node_groups = {
+#     eks_nodes = {
+#       desired_capacity = 2
+#       max_capacity     = 3
+#       min_capacity     = 1
+#       instance_type    = "t3.medium"
+#     }
+#   }
+
+  
+# }
+  # Optional: Manage Kubernetes Add-ons (CoreDNS, Kube-proxy, VPC CNI)
+  # enable_coredns = true
+  # enable_kube_proxy = true
+  # enable_vpc_cni = true
+
+  # # Enable CloudWatch logging
+  # cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
