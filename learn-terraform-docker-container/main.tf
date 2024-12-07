@@ -29,12 +29,11 @@ resource "docker_container" "nginx" {
   }
 }
 
-# Output the container IP address
 output "container_ip" {
   value = docker_container.nginx.network_data[0].ip_address
 }
 
-# Output the container ports
+
 output "container_ports" {
   value = docker_container.nginx.ports
 }
