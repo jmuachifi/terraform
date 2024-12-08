@@ -16,7 +16,7 @@ resource "docker_image" "nginx" {
 
 resource "docker_container" "nginx" {
   image = docker_image.nginx.image_id
-  name  = "tutorial"
+  name  = var.container_name
   ports {
     internal = 80
     external = 8080
@@ -28,15 +28,5 @@ resource "docker_container" "nginx" {
     read_only      = true
   }
 }
-
-output "container_ip" {
-  value = docker_container.nginx.network_data[0].ip_address
-}
-
-
-output "container_ports" {
-  value = docker_container.nginx.ports
-}
-
 
 
