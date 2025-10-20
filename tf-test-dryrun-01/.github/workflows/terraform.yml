@@ -1,0 +1,105 @@
+name: terraform
+
+on:
+  pull_request:
+    paths:
+      - 'infra/**'
+      - 'envs/**'
+      - '.github/workflows/terraform.yml'
+  push:
+    branches: [ main, stage ]
+    paths:
+      - 'infra/**'
+      - 'envs/**'
+
+env:
+  AWS_REGION: us-east-1
+  TF_IN_AUTOMATION: true
+  TF_INPUT: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  fmt_validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.7
+      - name: Terraform fmt
+        working-directory: infra
+        run: terraform fmt -check -recursive
+      - name: Terraform init (read-only backend)
+        working-directory: infra
+        run: terraform init -backend-config=../envs/prod/backend.hcl -reconfigure
+      - name: Terraform validate
+        working-directory: infra
+        run: terraform validate
+
+  plan:
+    if: github.event_name == 'pull_request'
+    needs: fmt_validate
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.7
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_GHA_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Terraform init
+        working-directory: infra
+        run: terraform init -backend-config=../envs/prod/backend.hcl -reconfigure
+      - name: Terraform plan
+        id: plan
+        working-directory: infra
+        run: terraform plan -var-file=../envs/prod/terraform.tfvars -input=false -no-color -out=tf.plan
+      - name: Upload plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: tf-plan
+          path: infra/tf.plan
+
+  apply:
+    if: github.event_name == 'push'
+    needs: fmt_validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.7
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ github.ref == 'refs/heads/stage' && secrets.AWS_GHA_ROLE_ARN_STAGE || secrets.AWS_GHA_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Terraform init
+        working-directory: infra
+        run: |
+          if [ "${GITHUB_REF}" = "refs/heads/stage" ]; then
+            terraform init -backend-config=../envs/stage/backend.hcl -reconfigure
+          else
+            terraform init -backend-config=../envs/prod/backend.hcl -reconfigure
+          fi
+      - name: Terraform plan
+        working-directory: infra
+        run: |
+          if [ "${GITHUB_REF}" = "refs/heads/stage" ]; then
+            terraform plan -var-file=../envs/stage/terraform.tfvars -input=false -no-color -out=tf.plan
+          else
+            terraform plan -var-file=../envs/prod/terraform.tfvars -input=false -no-color -out=tf.plan
+          fi
+      - name: Terraform apply
+        working-directory: infra
+        run: terraform apply -auto-approve tf.plan

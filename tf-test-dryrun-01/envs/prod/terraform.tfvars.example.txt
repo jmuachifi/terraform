@@ -1,0 +1,21 @@
+project      = "tf-test"
+environment  = "prod"
+aws_region   = "us-east-1"
+
+cluster_version       = "1.30"
+vpc_cidr              = "10.0.0.0/16"
+public_subnet_cidrs   = ["10.0.0.0/20", "10.0.16.0/20", "10.0.32.0/20"]
+private_subnet_cidrs  = ["10.0.48.0/20", "10.0.64.0/20", "10.0.80.0/20"]
+min_size              = 2
+max_size              = 5
+desired_size          = 3
+
+enable_argocd         = true
+argocd_namespace      = "argocd"
+github_repo_url       = "https://github.com/OWNER/REPO.git"
+github_repo_path      = "gitops/cluster"
+github_repo_revision  = "main"
+
+tags = {
+  Owner = "platform-team"
+}
