@@ -1,0 +1,119 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+        revision: HEAD
+        directories:
+          - path: k8s/applications/dev/*
+  template:
+    metadata:
+      name: '{{path.basename}}-dev'
+      namespace: argocd
+      labels:
+        environment: dev
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices-apps-staging
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+        revision: staging
+        directories:
+          - path: k8s/applications/staging/*
+  template:
+    metadata:
+      name: '{{path.basename}}-staging'
+      namespace: argocd
+      labels:
+        environment: staging
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+        targetRevision: staging
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices-apps-prod
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+        revision: main
+        directories:
+          - path: k8s/applications/prod/*
+  template:
+    metadata:
+      name: '{{path.basename}}-prod'
+      namespace: argocd
+      labels:
+        environment: prod
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: false  # Manual approval for prod
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m

@@ -1,0 +1,92 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - develop
+    paths:
+      - '**.tf'
+      - '**.tfvars'
+      - '.github/workflows/terraform-*.yml'
+
+env:
+  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  TF_VERSION: '1.5.0'
+
+jobs:
+  determine-environment:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-env.outputs.environment }}
+    steps:
+      - name: Determine environment
+        id: set-env
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "environment=prod" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          else
+            echo "environment=dev" >> $GITHUB_OUTPUT
+          fi
+
+  terraform-apply:
+    needs: determine-environment
+    runs-on: ubuntu-latest
+    environment: ${{ needs.determine-environment.outputs.environment }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Terraform Init
+        run: |
+          cd environments/${{ needs.determine-environment.outputs.environment }}
+          terraform init \
+            -backend-config="resource_group_name=${{ secrets.TFSTATE_RESOURCE_GROUP }}" \
+            -backend-config="storage_account_name=${{ secrets.TFSTATE_STORAGE_ACCOUNT }}" \
+            -backend-config="container_name=tfstate" \
+            -backend-config="key=${{ needs.determine-environment.outputs.environment }}.terraform.tfstate"
+
+      - name: Terraform Apply
+        run: |
+          cd environments/${{ needs.determine-environment.outputs.environment }}
+          terraform apply -var-file=terraform.tfvars -auto-approve
+
+      - name: Get AKS Credentials
+        run: |
+          CLUSTER_NAME=$(cd environments/${{ needs.determine-environment.outputs.environment }} && terraform output -raw aks_cluster_name)
+          RESOURCE_GROUP=$(cd environments/${{ needs.determine-environment.outputs.environment }} && terraform output -raw resource_group_name)
+          az aks get-credentials --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --overwrite-existing
+
+      - name: Deploy ArgoCD Bootstrap
+        run: |
+          # Apply ArgoCD App of Apps
+          kubectl apply -f k8s/argocd/bootstrap/app-of-apps.yaml
+          
+      - name: Summary
+        run: |
+          echo "## Terraform Apply Complete! 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Environment: ${{ needs.determine-environment.outputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cd environments/${{ needs.determine-environment.outputs.environment }}
+          echo "**AKS Cluster:** $(terraform output -raw aks_cluster_name)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Resource Group:** $(terraform output -raw resource_group_name)" >> $GITHUB_STEP_SUMMARY

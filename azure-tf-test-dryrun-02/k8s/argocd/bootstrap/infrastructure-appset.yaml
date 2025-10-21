@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: infrastructure-apps
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: ingress-nginx
+            namespace: ingress-nginx
+            path: k8s/infrastructure/ingress-nginx
+          - name: cert-manager
+            namespace: cert-manager
+            path: k8s/infrastructure/cert-manager
+          - name: external-dns
+            namespace: external-dns
+            path: k8s/infrastructure/external-dns
+  template:
+    metadata:
+      name: '{{name}}'
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m

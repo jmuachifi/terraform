@@ -1,0 +1,120 @@
+# Example Terraform Variables Configuration
+# Copy this file to terraform.tfvars and customize for your environment
+
+# General Configuration
+environment  = "dev"
+project_name = "aksproject"
+location     = "eastus"
+
+tags = {
+  Project     = "AKS Production Platform"
+  ManagedBy   = "Terraform"
+  Team        = "DevOps"
+  CostCenter  = "Engineering"
+}
+
+# Networking Configuration
+vnet_address_space            = ["10.0.0.0/16"]
+aks_subnet_address_prefix     = "10.0.1.0/24"
+pods_subnet_address_prefix    = "10.0.2.0/24"
+ingress_subnet_address_prefix = "10.0.3.0/24"
+
+# AKS Cluster Configuration
+kubernetes_version = "1.30"
+sku_tier          = "Standard"  # Use "Premium" for production with SLA
+
+# Network Configuration
+network_plugin      = "azure"
+network_plugin_mode = "overlay"  # Uses CNI Overlay for better IP management
+network_policy      = "azure"    # Options: azure, calico, cilium
+dns_service_ip      = "10.2.0.10"
+service_cidr        = "10.2.0.0/16"
+pod_cidr            = "10.244.0.0/16"
+
+# Default Node Pool (System Pool)
+default_node_pool = {
+  name            = "system"
+  vm_size         = "Standard_D4s_v3"  # 4 vCPU, 16 GB RAM
+  node_count      = 3
+  min_count       = 2
+  max_count       = 5
+  os_disk_size_gb = 128
+  os_disk_type    = "Managed"
+  os_sku          = "AzureLinux"  # Cost-effective, secure
+  auto_scaling    = true
+  zones           = [1, 2, 3]  # High availability across zones
+  max_pods        = 50
+  node_labels = {
+    "role" = "system"
+  }
+}
+
+# Additional Node Pools for Workloads
+additional_node_pools = [
+  {
+    name            = "workload"
+    vm_size         = "Standard_D8s_v3"  # 8 vCPU, 32 GB RAM
+    node_count      = 3
+    min_count       = 2
+    max_count       = 10
+    os_disk_size_gb = 256
+    os_disk_type    = "Managed"
+    auto_scaling    = true
+    zones           = [1, 2, 3]
+    max_pods        = 110
+    node_labels = {
+      "role"        = "workload"
+      "environment" = "production"
+    }
+    node_taints = []
+  }
+]
+
+# Monitoring Configuration
+log_analytics_workspace_sku    = "PerGB2018"
+log_analytics_retention_days   = 30
+enable_container_insights      = true
+
+# RBAC Configuration
+azure_rbac_enabled = true
+# Add your Azure AD group Object IDs for cluster admin access
+admin_group_object_ids = [
+  # "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+]
+
+# Azure Policy
+azure_policy_enabled = true
+
+# Auto-scaling Configuration
+cluster_autoscaler_profile = {
+  scale_down_delay_after_add       = "10m"
+  scale_down_unneeded              = "10m"
+  scale_down_utilization_threshold = "0.5"
+  max_graceful_termination_sec     = "600"
+  balance_similar_node_groups      = true
+  skip_nodes_with_system_pods      = true
+}
+
+# GitOps - ArgoCD
+install_argocd        = true
+argocd_namespace      = "argocd"
+argocd_chart_version  = "7.7.12"
+
+# Ingress Controller
+install_nginx_ingress    = true
+nginx_ingress_namespace  = "ingress-nginx"
+
+# Cert Manager for TLS
+install_cert_manager   = true
+cert_manager_namespace = "cert-manager"
+cert_manager_email     = "devops@example.com"  # Change this to your email
+
+# Private Cluster (set to true for production)
+private_cluster_enabled = false
+
+# Key Vault Secrets Provider
+enable_key_vault_secrets_provider = true
+
+# Workload Identity
+workload_identity_enabled = true
+oidc_issuer_enabled       = true

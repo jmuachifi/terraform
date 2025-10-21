@@ -1,0 +1,71 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Kubeconfig
+kubeconfig
+*.kubeconfig
+.kube/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Backup files
+*.backup
+*.bak
+
+# Logs
+*.log
+
+# Secrets
+*.pem
+*.key
+secrets/
+credentials/
+
+# Environment files
+.env
+.env.local
+
+# Build artifacts
+dist/
+build/
+
+# Node modules (if any)
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Helm
+charts/
+*.tgz
+
+# Temporary files
+tmp/
+temp/
+*.tmp

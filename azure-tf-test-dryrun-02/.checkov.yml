@@ -1,0 +1,16 @@
+# Checkov configuration (Terraform)
+
+framework:
+  - terraform
+
+# Uncomment to skip specific policies by ID, e.g., CKV_AZURE_*
+# skip-check:
+#   - CKV_AZURE_999
+
+# Quiet output suitable for CI; adjust as needed
+quiet: true
+compact: true
+
+# Optional: write SARIF/JSON output reports
+# output: sarif
+# output-file-path: reports/checkov.sarif
