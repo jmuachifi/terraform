@@ -1,0 +1,41 @@
+# ArgoCD Project for Multi-Tenancy
+
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: argocd
+spec:
+  description: Default project for all applications
+  
+  # Source repositories
+  sourceRepos:
+    - 'https://dev.azure.com/your-org/your-project/_git/*'
+    - 'https://github.com/*'
+  
+  # Destination clusters and namespaces
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  
+  # Cluster resource whitelist
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+    - group: 'rbac.authorization.k8s.io'
+      kind: ClusterRole
+    - group: 'rbac.authorization.k8s.io'
+      kind: ClusterRoleBinding
+    - group: 'storage.k8s.io'
+      kind: StorageClass
+    - group: 'apiextensions.k8s.io'
+      kind: CustomResourceDefinition
+  
+  # Namespace resource whitelist
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  
+  # Orphaned resources monitoring
+  orphanedResources:
+    warn: true

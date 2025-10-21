@@ -1,0 +1,53 @@
+# External DNS for automatic DNS management
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes-sigs.github.io/external-dns/
+    targetRevision: 1.13.1
+    chart: external-dns
+    helm:
+      values: |
+        provider: azure
+        
+        azure:
+          resourceGroup: "rg-akscluster-dev"  # Update with your resource group
+          tenantId: "your-tenant-id"           # Update with your tenant ID
+          subscriptionId: "your-subscription-id" # Update with your subscription ID
+          useManagedIdentityExtension: true
+        
+        domainFilters:
+          - example.com  # Update with your domain
+        
+        policy: sync
+        registry: txt
+        txtOwnerId: "aks-dev"
+        
+        resources:
+          requests:
+            cpu: 10m
+            memory: 64Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          fsGroup: 1000
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: external-dns
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

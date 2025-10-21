@@ -1,0 +1,178 @@
+# Azure DevOps Pipeline for GitOps Application Deployment
+# This pipeline syncs application manifests to the Git repository
+# ArgoCD watches the repository and deploys changes automatically
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - gitops/**
+
+pr: none
+
+variables:
+  - group: gitops-credentials
+  - name: gitopsRepoUrl
+    value: 'https://dev.azure.com/your-org/your-project/_git/gitops-manifests'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: ValidateManifests
+    displayName: 'Validate Kubernetes Manifests'
+    jobs:
+      - job: Validate
+        displayName: 'Validate and Lint Manifests'
+        steps:
+          - task: Bash@3
+            displayName: 'Install kubectl and kubeval'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Install kubectl
+                curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+                chmod +x kubectl
+                sudo mv kubectl /usr/local/bin/
+                
+                # Install kubeval
+                wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+                tar xf kubeval-linux-amd64.tar.gz
+                sudo mv kubeval /usr/local/bin/
+
+          - task: Bash@3
+            displayName: 'Validate Kubernetes manifests'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Validate all YAML files
+                find gitops/ -name '*.yaml' -o -name '*.yml' | while read file; do
+                  echo "Validating $file"
+                  kubeval --strict "$file" || exit 1
+                done
+
+          - task: Bash@3
+            displayName: 'Dry-run apply manifests'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Dry-run to check for syntax errors
+                kubectl apply --dry-run=client -f gitops/apps/ -R || exit 1
+                kubectl apply --dry-run=client -f gitops/bootstrap/ -R || exit 1
+
+  - stage: SyncDev
+    displayName: 'Sync to Dev GitOps Repo'
+    dependsOn: ValidateManifests
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+    jobs:
+      - job: SyncDev
+        displayName: 'Sync manifests to Dev branch'
+        steps:
+          - task: Bash@3
+            displayName: 'Configure Git'
+            inputs:
+              targetType: 'inline'
+              script: |
+                git config --global user.email "azuredevops@example.com"
+                git config --global user.name "Azure DevOps"
+
+          - task: Bash@3
+            displayName: 'Push to GitOps repository'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Clone gitops repo
+                git clone $(gitopsRepoUrl) gitops-repo
+                cd gitops-repo
+                git checkout -b dev || git checkout dev
+                
+                # Copy manifests
+                cp -r ../gitops/* .
+                
+                # Commit and push
+                git add .
+                git commit -m "GitOps sync from pipeline - Build $(Build.BuildNumber)" || echo "No changes to commit"
+                git push origin dev
+            env:
+              AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+
+  - stage: SyncStaging
+    displayName: 'Sync to Staging GitOps Repo'
+    dependsOn: ValidateManifests
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - job: SyncStaging
+        displayName: 'Sync manifests to Staging branch'
+        steps:
+          - task: Bash@3
+            displayName: 'Configure Git'
+            inputs:
+              targetType: 'inline'
+              script: |
+                git config --global user.email "azuredevops@example.com"
+                git config --global user.name "Azure DevOps"
+
+          - task: Bash@3
+            displayName: 'Push to GitOps repository'
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Clone gitops repo
+                git clone $(gitopsRepoUrl) gitops-repo
+                cd gitops-repo
+                git checkout -b staging || git checkout staging
+                
+                # Copy manifests
+                cp -r ../gitops/* .
+                
+                # Commit and push
+                git add .
+                git commit -m "GitOps sync from pipeline - Build $(Build.BuildNumber)" || echo "No changes to commit"
+                git push origin staging
+            env:
+              AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+
+  - stage: SyncProd
+    displayName: 'Sync to Production GitOps Repo'
+    dependsOn: SyncStaging
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: SyncProd
+        displayName: 'Sync manifests to Production branch'
+        environment: 'production-gitops'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: Bash@3
+                  displayName: 'Configure Git'
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      git config --global user.email "azuredevops@example.com"
+                      git config --global user.name "Azure DevOps"
+
+                - task: Bash@3
+                  displayName: 'Push to GitOps repository'
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      # Clone gitops repo
+                      git clone $(gitopsRepoUrl) gitops-repo
+                      cd gitops-repo
+                      git checkout -b prod || git checkout prod
+                      
+                      # Copy manifests
+                      cp -r ../gitops/* .
+                      
+                      # Commit and push
+                      git add .
+                      git commit -m "GitOps sync from pipeline - Build $(Build.BuildNumber)" || echo "No changes to commit"
+                      git push origin prod
+                  env:
+                    AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)

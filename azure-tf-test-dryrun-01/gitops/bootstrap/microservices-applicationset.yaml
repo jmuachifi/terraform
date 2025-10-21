@@ -1,0 +1,62 @@
+# ArgoCD ApplicationSet for Microservices
+# Deploys application microservices across environments
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - cluster: dev
+                  url: https://kubernetes.default.svc
+                  environment: dev
+                - cluster: staging
+                  url: https://kubernetes.default.svc
+                  environment: staging
+                - cluster: prod
+                  url: https://kubernetes.default.svc
+                  environment: prod
+          - git:
+              repoURL: https://dev.azure.com/your-org/your-project/_git/gitops-manifests
+              revision: HEAD
+              directories:
+                - path: 'gitops/apps/microservices/*'
+  template:
+    metadata:
+      name: '{{path.basename}}-{{cluster}}'
+      labels:
+        environment: '{{environment}}'
+        type: microservice
+        app: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://dev.azure.com/your-org/your-project/_git/gitops-manifests
+        targetRevision: '{{environment}}'
+        path: '{{path}}/{{environment}}'
+      destination:
+        server: '{{url}}'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+      # Progressive Delivery with health checks
+      ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jsonPointers:
+            - /spec/replicas

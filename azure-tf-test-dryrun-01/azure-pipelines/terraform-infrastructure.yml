@@ -1,0 +1,417 @@
+# Azure DevOps Pipeline for Terraform Infrastructure
+# GitOps approach - Infrastructure changes triggered by Git commits
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - environments/**
+      - modules/**
+      - versions.tf
+
+pr:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - environments/**
+      - modules/**
+      - versions.tf
+
+variables:
+  - group: terraform-azure-credentials
+  - name: terraformVersion
+    value: '1.5.0'
+  - name: azureServiceConnection
+    value: 'azure-service-connection'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: Validate
+    displayName: 'Validate Terraform'
+    jobs:
+      - job: ValidateDev
+        displayName: 'Validate Dev Environment'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: $(terraformVersion)
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Init - Dev'
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+              backendServiceArm: $(azureServiceConnection)
+              backendAzureRmResourceGroupName: 'tfstate-rg'
+              backendAzureRmStorageAccountName: 'tfstatedevaks'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'dev.terraform.tfstate'
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Validate - Dev'
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Format Check - Dev'
+            inputs:
+              provider: 'azurerm'
+              command: 'custom'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+              customCommand: 'fmt'
+              commandOptions: '-check -recursive'
+
+      - job: ValidateStaging
+        displayName: 'Validate Staging Environment'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: $(terraformVersion)
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Init - Staging'
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/staging'
+              backendServiceArm: $(azureServiceConnection)
+              backendAzureRmResourceGroupName: 'tfstate-rg'
+              backendAzureRmStorageAccountName: 'tfstatestgaks'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'staging.terraform.tfstate'
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Validate - Staging'
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/staging'
+
+      - job: ValidateProd
+        displayName: 'Validate Production Environment'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: $(terraformVersion)
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Init - Prod'
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/prod'
+              backendServiceArm: $(azureServiceConnection)
+              backendAzureRmResourceGroupName: 'tfstate-rg'
+              backendAzureRmStorageAccountName: 'tfstateprodaks'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'prod.terraform.tfstate'
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Validate - Prod'
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/prod'
+
+  - stage: PlanDev
+    displayName: 'Plan Dev Environment'
+    dependsOn: Validate
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), eq(variables['Build.SourceBranch'], 'refs/heads/main')))
+    jobs:
+      - job: PlanDev
+        displayName: 'Terraform Plan - Dev'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: $(terraformVersion)
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Init - Dev'
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+              backendServiceArm: $(azureServiceConnection)
+              backendAzureRmResourceGroupName: 'tfstate-rg'
+              backendAzureRmStorageAccountName: 'tfstatedevaks'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'dev.terraform.tfstate'
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Plan - Dev'
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+              environmentServiceNameAzureRM: $(azureServiceConnection)
+              commandOptions: '-out=tfplan-dev'
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish Terraform Plan'
+            inputs:
+              targetPath: '$(System.DefaultWorkingDirectory)/environments/dev/tfplan-dev'
+              artifact: 'tfplan-dev'
+              publishLocation: 'pipeline'
+
+  - stage: ApplyDev
+    displayName: 'Apply Dev Environment'
+    dependsOn: PlanDev
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+    jobs:
+      - deployment: ApplyDev
+        displayName: 'Terraform Apply - Dev'
+        environment: 'dev'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: TerraformInstaller@0
+                  displayName: 'Install Terraform'
+                  inputs:
+                    terraformVersion: $(terraformVersion)
+
+                - task: DownloadPipelineArtifact@2
+                  displayName: 'Download Terraform Plan'
+                  inputs:
+                    buildType: 'current'
+                    artifactName: 'tfplan-dev'
+                    targetPath: '$(System.DefaultWorkingDirectory)/environments/dev'
+
+                - task: TerraformTaskV4@4
+                  displayName: 'Terraform Init - Dev'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'init'
+                    workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+                    backendServiceArm: $(azureServiceConnection)
+                    backendAzureRmResourceGroupName: 'tfstate-rg'
+                    backendAzureRmStorageAccountName: 'tfstatedevaks'
+                    backendAzureRmContainerName: 'tfstate'
+                    backendAzureRmKey: 'dev.terraform.tfstate'
+
+                - task: TerraformTaskV4@4
+                  displayName: 'Terraform Apply - Dev'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'apply'
+                    workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+                    environmentServiceNameAzureRM: $(azureServiceConnection)
+                    commandOptions: 'tfplan-dev'
+
+                - task: Bash@3
+                  displayName: 'Configure kubectl for AKS'
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      # Get AKS credentials
+                      az aks get-credentials \
+                        --resource-group $(terraform output -raw resource_group_name) \
+                        --name $(terraform output -raw aks_cluster_name) \
+                        --overwrite-existing
+                    workingDirectory: '$(System.DefaultWorkingDirectory)/environments/dev'
+                  env:
+                    AZURE_DEVOPS_EXT_AZURE_RM_SERVICE_PRINCIPAL_KEY: $(servicePrincipalKey)
+
+                - task: Bash@3
+                  displayName: 'Install ArgoCD'
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -
+                      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+                      
+                      # Wait for ArgoCD to be ready
+                      kubectl wait --for=condition=available --timeout=600s deployment/argocd-server -n argocd
+
+  - stage: PlanStaging
+    displayName: 'Plan Staging Environment'
+    dependsOn: ApplyDev
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - job: PlanStaging
+        displayName: 'Terraform Plan - Staging'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: $(terraformVersion)
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Init - Staging'
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/staging'
+              backendServiceArm: $(azureServiceConnection)
+              backendAzureRmResourceGroupName: 'tfstate-rg'
+              backendAzureRmStorageAccountName: 'tfstatestgaks'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'staging.terraform.tfstate'
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Plan - Staging'
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/staging'
+              environmentServiceNameAzureRM: $(azureServiceConnection)
+              commandOptions: '-out=tfplan-staging'
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish Terraform Plan'
+            inputs:
+              targetPath: '$(System.DefaultWorkingDirectory)/environments/staging/tfplan-staging'
+              artifact: 'tfplan-staging'
+              publishLocation: 'pipeline'
+
+  - stage: ApplyStaging
+    displayName: 'Apply Staging Environment'
+    dependsOn: PlanStaging
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: ApplyStaging
+        displayName: 'Terraform Apply - Staging'
+        environment: 'staging'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: TerraformInstaller@0
+                  displayName: 'Install Terraform'
+                  inputs:
+                    terraformVersion: $(terraformVersion)
+
+                - task: DownloadPipelineArtifact@2
+                  displayName: 'Download Terraform Plan'
+                  inputs:
+                    buildType: 'current'
+                    artifactName: 'tfplan-staging'
+                    targetPath: '$(System.DefaultWorkingDirectory)/environments/staging'
+
+                - task: TerraformTaskV4@4
+                  displayName: 'Terraform Init - Staging'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'init'
+                    workingDirectory: '$(System.DefaultWorkingDirectory)/environments/staging'
+                    backendServiceArm: $(azureServiceConnection)
+                    backendAzureRmResourceGroupName: 'tfstate-rg'
+                    backendAzureRmStorageAccountName: 'tfstatestgaks'
+                    backendAzureRmContainerName: 'tfstate'
+                    backendAzureRmKey: 'staging.terraform.tfstate'
+
+                - task: TerraformTaskV4@4
+                  displayName: 'Terraform Apply - Staging'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'apply'
+                    workingDirectory: '$(System.DefaultWorkingDirectory)/environments/staging'
+                    environmentServiceNameAzureRM: $(azureServiceConnection)
+                    commandOptions: 'tfplan-staging'
+
+  - stage: PlanProd
+    displayName: 'Plan Production Environment'
+    dependsOn: ApplyStaging
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - job: PlanProd
+        displayName: 'Terraform Plan - Prod'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: $(terraformVersion)
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Init - Prod'
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/prod'
+              backendServiceArm: $(azureServiceConnection)
+              backendAzureRmResourceGroupName: 'tfstate-rg'
+              backendAzureRmStorageAccountName: 'tfstateprodaks'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'prod.terraform.tfstate'
+
+          - task: TerraformTaskV4@4
+            displayName: 'Terraform Plan - Prod'
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/environments/prod'
+              environmentServiceNameAzureRM: $(azureServiceConnection)
+              commandOptions: '-out=tfplan-prod'
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish Terraform Plan'
+            inputs:
+              targetPath: '$(System.DefaultWorkingDirectory)/environments/prod/tfplan-prod'
+              artifact: 'tfplan-prod'
+              publishLocation: 'pipeline'
+
+  - stage: ApplyProd
+    displayName: 'Apply Production Environment'
+    dependsOn: PlanProd
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: ApplyProd
+        displayName: 'Terraform Apply - Prod'
+        environment: 'production'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: TerraformInstaller@0
+                  displayName: 'Install Terraform'
+                  inputs:
+                    terraformVersion: $(terraformVersion)
+
+                - task: DownloadPipelineArtifact@2
+                  displayName: 'Download Terraform Plan'
+                  inputs:
+                    buildType: 'current'
+                    artifactName: 'tfplan-prod'
+                    targetPath: '$(System.DefaultWorkingDirectory)/environments/prod'
+
+                - task: TerraformTaskV4@4
+                  displayName: 'Terraform Init - Prod'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'init'
+                    workingDirectory: '$(System.DefaultWorkingDirectory)/environments/prod'
+                    backendServiceArm: $(azureServiceConnection)
+                    backendAzureRmResourceGroupName: 'tfstate-rg'
+                    backendAzureRmStorageAccountName: 'tfstateprodaks'
+                    backendAzureRmContainerName: 'tfstate'
+                    backendAzureRmKey: 'prod.terraform.tfstate'
+
+                - task: TerraformTaskV4@4
+                  displayName: 'Terraform Apply - Prod'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'apply'
+                    workingDirectory: '$(System.DefaultWorkingDirectory)/environments/prod'
+                    environmentServiceNameAzureRM: $(azureServiceConnection)
+                    commandOptions: 'tfplan-prod'

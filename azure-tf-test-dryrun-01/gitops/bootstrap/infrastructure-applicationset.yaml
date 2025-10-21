@@ -1,0 +1,51 @@
+# ArgoCD ApplicationSet for Infrastructure Components
+# Deploys core infrastructure services across environments
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: dev
+            url: https://kubernetes.default.svc
+            namespace: kube-system
+            environment: dev
+          - cluster: staging
+            url: https://kubernetes.default.svc
+            namespace: kube-system
+            environment: staging
+          - cluster: prod
+            url: https://kubernetes.default.svc
+            namespace: kube-system
+            environment: prod
+  template:
+    metadata:
+      name: 'infrastructure-{{cluster}}'
+      labels:
+        environment: '{{environment}}'
+        type: infrastructure
+    spec:
+      project: default
+      source:
+        repoURL: https://dev.azure.com/your-org/your-project/_git/gitops-manifests
+        targetRevision: '{{environment}}'
+        path: 'gitops/infrastructure/{{environment}}'
+      destination:
+        server: '{{url}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: 3
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m

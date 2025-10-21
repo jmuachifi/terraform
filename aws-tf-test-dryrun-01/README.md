@@ -1,4 +1,4 @@
-# Terraform EKS + GitOps (Argo CD) Starter
+# Terraform EKS + GitOps (Argo CD) Starter - Best practice
 
 This repo provisions a production-grade AWS EKS cluster with Terraform and bootstraps GitOps with Argo CD, plus a GitHub Actions pipeline using OpenID Connect (OIDC) to assume an AWS IAM role (no long-lived secrets).
 
