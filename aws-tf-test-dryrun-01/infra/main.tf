@@ -138,7 +138,7 @@ module "cluster_autoscaler_irsa" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
   version = "~> 5.39"
 
-  role_name                       = "${local.name}-cluster-autoscaler"
+  role_name                        = "${local.name}-cluster-autoscaler"
   attach_cluster_autoscaler_policy = false
   cluster_autoscaler_cluster_ids   = []
   oidc_providers = {
@@ -162,8 +162,8 @@ resource "kubectl_manifest" "app_cluster_autoscaler" {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
     metadata = {
-      name      = "cluster-autoscaler"
-      namespace = var.argocd_namespace
+      name       = "cluster-autoscaler"
+      namespace  = var.argocd_namespace
       finalizers = ["resources-finalizer.argocd.argoproj.io"]
     }
     spec = {
@@ -208,8 +208,8 @@ resource "kubectl_manifest" "app_cert_manager" {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
     metadata = {
-      name      = "cert-manager"
-      namespace = var.argocd_namespace
+      name       = "cert-manager"
+      namespace  = var.argocd_namespace
       finalizers = ["resources-finalizer.argocd.argoproj.io"]
     }
     spec = {
@@ -218,7 +218,7 @@ resource "kubectl_manifest" "app_cert_manager" {
         repoURL        = "https://charts.jetstack.io"
         chart          = "cert-manager"
         targetRevision = "v1.15.1"
-        helm = { values = "installCRDs=true" }
+        helm           = { values = "installCRDs=true" }
       }
       destination = {
         server    = "https://kubernetes.default.svc"
@@ -264,8 +264,8 @@ resource "kubectl_manifest" "app_aws_load_balancer_controller" {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
     metadata = {
-      name      = "aws-load-balancer-controller"
-      namespace = var.argocd_namespace
+      name       = "aws-load-balancer-controller"
+      namespace  = var.argocd_namespace
       finalizers = ["resources-finalizer.argocd.argoproj.io"]
     }
     spec = {
@@ -331,14 +331,14 @@ locals {
 }
 
 resource "kubectl_manifest" "argocd_crds" {
-  for_each  = var.enable_argocd ? local.argocd_crd_docs : {}
-  yaml_body = each.value
+  for_each   = var.enable_argocd ? local.argocd_crd_docs : {}
+  yaml_body  = each.value
   depends_on = [kubernetes_namespace.argocd]
 }
 
 resource "kubectl_manifest" "argocd_core" {
-  for_each  = var.enable_argocd ? local.argocd_non_crd_docs : {}
-  yaml_body = each.value
+  for_each   = var.enable_argocd ? local.argocd_non_crd_docs : {}
+  yaml_body  = each.value
   depends_on = [kubectl_manifest.argocd_crds]
 }
 
@@ -349,8 +349,8 @@ resource "kubectl_manifest" "argocd_root_app" {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
     metadata = {
-      name      = "root-apps"
-      namespace = var.argocd_namespace
+      name       = "root-apps"
+      namespace  = var.argocd_namespace
       finalizers = ["resources-finalizer.argocd.argoproj.io"]
     }
     spec = {

@@ -43,7 +43,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tf_state" {
 }
 
 resource "aws_s3_bucket_public_access_block" "tf_state" {
-  bucket = aws_s3_bucket.tf_state.id
+  bucket                  = aws_s3_bucket.tf_state.id
   block_public_acls       = true
   block_public_policy     = true
   ignore_public_acls      = true
@@ -67,7 +67,7 @@ resource "aws_dynamodb_table" "tf_lock" {
 
 # GitHub OIDC provider for AWS (if not already present in the account)
 data "aws_iam_openid_connect_provider" "github" {
-  arn = var.github_oidc_provider_arn
+  arn   = var.github_oidc_provider_arn
   count = var.github_oidc_provider_arn != null ? 1 : 0
 }
 
@@ -113,9 +113,9 @@ data "aws_iam_policy_document" "gha_assume" {
 }
 
 resource "aws_iam_role" "gha_oidc_role" {
-  name               = "${var.project}-${var.environment}-gha-oidc"
-  assume_role_policy = data.aws_iam_policy_document.gha_assume.json
-  description        = "Role assumed by GitHub Actions via OIDC to run Terraform"
+  name                 = "${var.project}-${var.environment}-gha-oidc"
+  assume_role_policy   = data.aws_iam_policy_document.gha_assume.json
+  description          = "Role assumed by GitHub Actions via OIDC to run Terraform"
   max_session_duration = 3600
   tags = {
     Project     = var.project
@@ -125,7 +125,7 @@ resource "aws_iam_role" "gha_oidc_role" {
 
 data "aws_iam_policy_document" "gha_permissions" {
   statement {
-    sid     = "TerraformCore"
+    sid = "TerraformCore"
     actions = [
       "sts:GetCallerIdentity",
       "ec2:Describe*",
