@@ -45,18 +45,6 @@ variable "network_rule_default_action" {
   default     = "Deny"
 }
 
-variable "allowed_ip_ranges" {
-  description = "List of allowed IP ranges"
-  type        = list(string)
-  default     = []
-}
-
-variable "allowed_subnet_ids" {
-  description = "List of allowed subnet IDs"
-  type        = list(string)
-  default     = []
-}
-
 variable "encryption_key_vault_key_id" {
   description = "Key Vault key ID for encryption (Premium SKU only)"
   type        = string

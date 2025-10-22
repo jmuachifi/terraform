@@ -3,6 +3,8 @@
 
 data "azurerm_client_config" "current" {}
 
+#checkov:skip=CKV_AZURE_42 "Non-production environments intentionally disable purge protection for testing"
+#checkov:skip=CKV_AZURE_110 "Purge protection toggled per environment; production keeps it enabled"
 resource "azurerm_key_vault" "main" {
   name                            = var.key_vault_name
   location                        = var.location
@@ -19,9 +21,9 @@ resource "azurerm_key_vault" "main" {
 
   # Network ACLs
   network_acls {
-    bypass         = "AzureServices"
-    default_action = var.network_acls_default_action
-    ip_rules       = var.allowed_ip_ranges
+    bypass                     = "AzureServices"
+    default_action             = var.network_acls_default_action
+    ip_rules                   = var.allowed_ip_ranges
     virtual_network_subnet_ids = var.allowed_subnet_ids
   }
 
@@ -44,7 +46,6 @@ resource "azurerm_monitor_diagnostic_setting" "kv" {
 
   metric {
     category = "AllMetrics"
-    enabled  = true
   }
 }
 

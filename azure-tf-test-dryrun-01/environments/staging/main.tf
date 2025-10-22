@@ -56,14 +56,14 @@ module "monitoring" {
 module "networking" {
   source = "../../modules/networking"
 
-  vnet_name                                = "vnet-${local.project}-${local.environment}"
-  resource_group_name                      = azurerm_resource_group.main.name
-  location                                 = var.location
-  vnet_address_space                       = ["10.1.0.0/16"]
-  aks_subnet_address_prefixes              = ["10.1.1.0/24"]
-  appgw_subnet_address_prefixes            = ["10.1.2.0/24"]
+  vnet_name                                 = "vnet-${local.project}-${local.environment}"
+  resource_group_name                       = azurerm_resource_group.main.name
+  location                                  = var.location
+  vnet_address_space                        = ["10.1.0.0/16"]
+  aks_subnet_address_prefixes               = ["10.1.1.0/24"]
+  appgw_subnet_address_prefixes             = ["10.1.2.0/24"]
   private_endpoints_subnet_address_prefixes = ["10.1.3.0/24"]
-  tags                                     = local.common_tags
+  tags                                      = local.common_tags
 }
 
 # Azure Container Registry
@@ -107,13 +107,9 @@ module "aks" {
   log_analytics_workspace_id = module.monitoring.workspace_id
   acr_id                     = module.acr.acr_id
   key_vault_id               = module.keyvault.key_vault_id
-  admin_group_object_ids     = var.admin_group_object_ids
-
   # Node pool configuration for staging
-  system_node_count     = 3
-  system_node_min_count = 3
-  system_node_max_count = 5
-  system_node_size      = "Standard_D4s_v5"
+  system_node_count = 3
+  system_node_size  = "Standard_D4s_v5"
 
   user_node_count     = 3
   user_node_min_count = 3

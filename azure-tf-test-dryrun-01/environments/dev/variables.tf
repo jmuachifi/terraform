@@ -10,8 +10,4 @@ variable "kubernetes_version" {
   default     = "1.28.3"
 }
 
-variable "admin_group_object_ids" {
-  description = "Azure AD group object IDs for cluster admins"
-  type        = list(string)
-  default     = []
-}
+

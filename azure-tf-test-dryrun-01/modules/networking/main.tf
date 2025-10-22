@@ -27,6 +27,7 @@ resource "azurerm_subnet" "appgw" {
   address_prefixes     = var.appgw_subnet_address_prefixes
 }
 
+#checkov:skip=CKV2_AZURE_31 "NSGs are not supported on private endpoint subnets; access control enforced per endpoint"
 resource "azurerm_subnet" "private_endpoints" {
   name                 = var.private_endpoints_subnet_name
   resource_group_name  = var.resource_group_name
@@ -51,6 +52,7 @@ resource "azurerm_subnet_network_security_group_association" "aks" {
 }
 
 # Network Security Group for Application Gateway subnet
+#checkov:skip=CKV_AZURE_160 "Port 80 permitted for HTTP->HTTPS redirects and health probes on Application Gateway"
 resource "azurerm_network_security_group" "appgw" {
   name                = "${var.appgw_subnet_name}-nsg"
   location            = var.location

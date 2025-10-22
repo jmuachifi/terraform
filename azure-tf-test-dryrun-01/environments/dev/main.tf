@@ -56,14 +56,14 @@ module "monitoring" {
 module "networking" {
   source = "../../modules/networking"
 
-  vnet_name                                = "vnet-${local.project}-${local.environment}"
-  resource_group_name                      = azurerm_resource_group.main.name
-  location                                 = var.location
-  vnet_address_space                       = ["10.0.0.0/16"]
-  aks_subnet_address_prefixes              = ["10.0.1.0/24"]
-  appgw_subnet_address_prefixes            = ["10.0.2.0/24"]
+  vnet_name                                 = "vnet-${local.project}-${local.environment}"
+  resource_group_name                       = azurerm_resource_group.main.name
+  location                                  = var.location
+  vnet_address_space                        = ["10.0.0.0/16"]
+  aks_subnet_address_prefixes               = ["10.0.1.0/24"]
+  appgw_subnet_address_prefixes             = ["10.0.2.0/24"]
   private_endpoints_subnet_address_prefixes = ["10.0.3.0/24"]
-  tags                                     = local.common_tags
+  tags                                      = local.common_tags
 }
 
 # Azure Container Registry
@@ -99,7 +99,7 @@ module "aks" {
   location                   = var.location
   dns_prefix                 = "${local.project}-${local.environment}"
   kubernetes_version         = var.kubernetes_version
-  sku_tier                   = "Free" # Use Standard in production
+  sku_tier                   = "Standard"
   vnet_subnet_id             = module.networking.aks_subnet_id
   vnet_id                    = module.networking.vnet_id
   dns_service_ip             = "10.0.4.10"
@@ -107,13 +107,9 @@ module "aks" {
   log_analytics_workspace_id = module.monitoring.workspace_id
   acr_id                     = module.acr.acr_id
   key_vault_id               = module.keyvault.key_vault_id
-  admin_group_object_ids     = var.admin_group_object_ids
-
   # Node pool configuration for dev
-  system_node_count     = 2
-  system_node_min_count = 2
-  system_node_max_count = 3
-  system_node_size      = "Standard_D2s_v5"
+  system_node_count = 2
+  system_node_size  = "Standard_D2s_v5"
 
   user_node_count     = 2
   user_node_min_count = 2

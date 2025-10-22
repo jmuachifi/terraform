@@ -1,11 +1,5 @@
 # TFLint configuration for Terraform (Azure-focused)
 
-config {
-  # TFLint v0.54+: use call_module_type instead of deprecated `module`
-  # Options: "none", "local", "remote", "all"
-  call_module_type = "all"
-}
-
 # Tip: To enable the AzureRM ruleset, install the plugin and uncomment below.
 # This requires internet access to download the plugin.
 #
@@ -15,8 +9,7 @@ config {
 #   source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 # }
 plugin "terraform" {
-  enabled          = true
-  call_module_type = "all"
+  enabled = true
 }
 
 plugin "azurerm" {

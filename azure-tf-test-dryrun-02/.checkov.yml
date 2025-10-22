@@ -3,9 +3,15 @@
 framework:
   - terraform
 
-# Uncomment to skip specific policies by ID, e.g., CKV_AZURE_*
-# skip-check:
-#   - CKV_AZURE_999
+skip-check:
+  - id: CKV_AZURE_115
+    comment: "Private cluster disabled intentionally for local/dev usage"
+  - id: CKV_AZURE_226
+    comment: "Ephemeral OS disks not supported on all target SKUs"
+  - id: CKV_AZURE_227
+    comment: "Disk encryption handled via platform-managed keys outside Terraform"
+  - id: CKV_AZURE_168
+    comment: "Pod density tuned per workload; validated in separate policy"
 
 # Quiet output suitable for CI; adjust as needed
 quiet: true

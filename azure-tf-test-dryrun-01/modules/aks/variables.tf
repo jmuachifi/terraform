@@ -36,12 +36,6 @@ variable "private_cluster_enabled" {
   default     = false
 }
 
-variable "automatic_channel_upgrade" {
-  description = "Automatic channel upgrade (patch, stable, rapid, node-image)"
-  type        = string
-  default     = "stable"
-}
-
 variable "vnet_subnet_id" {
   description = "Subnet ID for AKS nodes"
   type        = string
@@ -56,18 +50,6 @@ variable "system_node_count" {
   description = "Initial number of system nodes"
   type        = number
   default     = 3
-}
-
-variable "system_node_min_count" {
-  description = "Minimum number of system nodes"
-  type        = number
-  default     = 3
-}
-
-variable "system_node_max_count" {
-  description = "Maximum number of system nodes"
-  type        = number
-  default     = 5
 }
 
 variable "system_node_size" {
@@ -119,18 +101,6 @@ variable "service_cidr" {
 variable "log_analytics_workspace_id" {
   description = "Log Analytics workspace ID for monitoring"
   type        = string
-}
-
-variable "enable_azure_ad_rbac" {
-  description = "Enable Azure AD RBAC"
-  type        = bool
-  default     = true
-}
-
-variable "admin_group_object_ids" {
-  description = "Azure AD group object IDs for cluster admins"
-  type        = list(string)
-  default     = []
 }
 
 variable "acr_id" {
