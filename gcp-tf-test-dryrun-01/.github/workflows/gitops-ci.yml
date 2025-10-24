@@ -1,23 +1,23 @@
 name: GitOps Validation
 
-on:
+"on":
   push:
     branches:
       - develop
       - staging
       - main
     paths:
-      - 'gitops/**'
-      - '.github/workflows/gitops-ci.yml'
+      - "gitops/**"
+      - ".github/workflows/gitops-ci.yml"
   pull_request:
     branches:
       - develop
       - staging
       - main
     paths:
-      - 'gitops/**'
-      - '.github/workflows/gitops-ci.yml'
-  workflow_dispatch: {}
+      - "gitops/**"
+      - ".github/workflows/gitops-ci.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -33,14 +33,20 @@ jobs:
 
       - name: Install kustomize
         run: |
-          curl -sSL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.3.0/kustomize_v5.3.0_linux_amd64.tar.gz -o kustomize.tgz
+          set -euo pipefail
+          curl -sSL \
+            https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.3.0/kustomize_v5.3.0_linux_amd64.tar.gz \
+            -o kustomize.tgz
           tar -xzf kustomize.tgz
           sudo mv kustomize /usr/local/bin/kustomize
           kustomize version
 
       - name: Install kubeconform
         run: |
-          curl -sSL https://github.com/yannh/kubeconform/releases/download/v0.6.2/kubeconform-linux-amd64.tar.gz -o kubeconform.tgz
+          set -euo pipefail
+          curl -sSL \
+            https://github.com/yannh/kubeconform/releases/download/v0.6.2/kubeconform-linux-amd64.tar.gz \
+            -o kubeconform.tgz
           tar -xzf kubeconform.tgz kubeconform
           sudo mv kubeconform /usr/local/bin/kubeconform
           kubeconform -version
@@ -48,13 +54,22 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
         with:
-          version: 'v3.14.0'
+          version: v3.14.0
 
       - name: Validate bootstrap manifests
         run: |
           set -euo pipefail
           kustomize build gitops/bootstrap
-          kubeconform -skip CustomResourceDefinition -skip Application -skip AppProject -skip ApplicationSet -skip ServiceMonitor -skip ClusterIssuer -summary -kubernetes-version ${KUBERNETES_VERSION} <(kustomize build gitops/bootstrap)
+          kubeconform \
+            -skip CustomResourceDefinition \
+            -skip Application \
+            -skip AppProject \
+            -skip ApplicationSet \
+            -skip ServiceMonitor \
+            -skip ClusterIssuer \
+            -summary \
+            -kubernetes-version "${KUBERNETES_VERSION}" \
+            <(kustomize build gitops/bootstrap)
 
       - name: Validate platform overlays
         run: |
@@ -64,7 +79,16 @@ jobs:
           for overlay in "${overlays[@]}"; do
             echo "::group::Validating ${overlay}"
             kustomize build "${overlay}"
-            kubeconform -skip CustomResourceDefinition -skip Application -skip AppProject -skip ApplicationSet -skip ServiceMonitor -skip ClusterIssuer -summary -kubernetes-version ${KUBERNETES_VERSION} <(kustomize build "${overlay}")
+            kubeconform \
+              -skip CustomResourceDefinition \
+              -skip Application \
+              -skip AppProject \
+              -skip ApplicationSet \
+              -skip ServiceMonitor \
+              -skip ClusterIssuer \
+              -summary \
+              -kubernetes-version "${KUBERNETES_VERSION}" \
+              <(kustomize build "${overlay}")
             echo "::endgroup::"
           done
           shopt -u nullglob
@@ -77,7 +101,16 @@ jobs:
           for overlay in "${overlays[@]}"; do
             echo "::group::Validating ${overlay}"
             kustomize build "${overlay}"
-            kubeconform -skip CustomResourceDefinition -skip Application -skip AppProject -skip ApplicationSet -skip ServiceMonitor -skip ClusterIssuer -summary -kubernetes-version ${KUBERNETES_VERSION} <(kustomize build "${overlay}")
+            kubeconform \
+              -skip CustomResourceDefinition \
+              -skip Application \
+              -skip AppProject \
+              -skip ApplicationSet \
+              -skip ServiceMonitor \
+              -skip ClusterIssuer \
+              -summary \
+              -kubernetes-version "${KUBERNETES_VERSION}" \
+              <(kustomize build "${overlay}")
             echo "::endgroup::"
           done
           shopt -u nullglob
@@ -88,19 +121,27 @@ jobs:
           helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
           helm repo add jetstack https://charts.jetstack.io
           helm repo update
-          
+
           echo "::group::Validating ingress-nginx"
           helm template ingress-nginx ingress-nginx/ingress-nginx --version 4.11.0 \
             -f gitops/platform/ingress-nginx/values-common.yaml \
-            -f gitops/platform/ingress-nginx/values-dev.yaml | \
-            kubeconform -skip CustomResourceDefinition -skip ServiceMonitor -summary -kubernetes-version ${KUBERNETES_VERSION}
+            -f gitops/platform/ingress-nginx/values-dev.yaml |
+            kubeconform \
+              -skip CustomResourceDefinition \
+              -skip ServiceMonitor \
+              -summary \
+              -kubernetes-version "${KUBERNETES_VERSION}"
           echo "::endgroup::"
-          
+
           echo "::group::Validating cert-manager"
           helm template cert-manager jetstack/cert-manager --version v1.14.5 \
             -f gitops/platform/cert-manager/values-common.yaml \
-            -f gitops/platform/cert-manager/values-dev.yaml | \
-            kubeconform -skip CustomResourceDefinition -skip ClusterIssuer -summary -kubernetes-version ${KUBERNETES_VERSION}
+            -f gitops/platform/cert-manager/values-dev.yaml |
+            kubeconform \
+              -skip CustomResourceDefinition \
+              -skip ClusterIssuer \
+              -summary \
+              -kubernetes-version "${KUBERNETES_VERSION}"
           echo "::endgroup::"
 
       - name: Upload validation logs
