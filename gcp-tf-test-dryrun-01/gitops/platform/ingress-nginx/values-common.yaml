@@ -1,0 +1,24 @@
+controller:
+  replicaCount: 2
+  service:
+    type: LoadBalancer
+    annotations:
+      networking.gke.io/load-balancer-type: "External"
+      cloud.google.com/backend-config: '{"default":"ingress-nginx-default"}'
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  config:
+    use-forwarded-headers: "true"
+    compute-full-forwarded-for: "true"
+    enable-brotli: "true"
+    proxy-body-size: "64m"
+  admissionWebhooks:
+    enabled: true
+    patch:
+      enabled: true
+  podAnnotations:
+    cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+defaultBackend:
+  enabled: true

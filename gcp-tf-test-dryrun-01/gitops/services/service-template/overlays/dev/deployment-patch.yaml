@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-template
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/version: "0.1.0-dev"
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/your-org/service-template:dev
+          envFrom:
+            - configMapRef:
+                name: service-template-config
+          env:
+            - name: FEATURE_FLAG_PREVIEW
+              value: "false"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 96Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi

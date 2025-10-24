@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: service-template-prod
+commonLabels:
+  environment: prod
+resources:
+  - ../../base
+configMapGenerator:
+  - name: service-template-config
+    literals:
+      - APP_ENV=prod
+      - LOG_LEVEL=warn
+generatorOptions:
+  disableNameSuffixHash: true
+patchesStrategicMerge:
+  - deployment-patch.yaml
+  - hpa-patch.yaml
+  - serviceaccount-patch.yaml

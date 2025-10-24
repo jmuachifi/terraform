@@ -1,0 +1,110 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: services-dev
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/jmuachifi/terraform.git
+        revision: develop
+        directories:
+          - path: gitops/services/*/overlays/dev
+  template:
+    metadata:
+      name: '{{ index (splitList "/" path) 2 }}-dev'
+      labels:
+        environment: dev
+        app.kubernetes.io/managed-by: argocd
+        app.kubernetes.io/part-of: services
+    spec:
+      project: services
+      source:
+        repoURL: https://github.com/jmuachifi/terraform.git
+        targetRevision: develop
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ index (splitList "/" path) 2 }}-dev'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: services-staging
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/jmuachifi/terraform.git
+        revision: staging
+        directories:
+          - path: gitops/services/*/overlays/staging
+  template:
+    metadata:
+      name: '{{ index (splitList "/" path) 2 }}-staging'
+      labels:
+        environment: staging
+        app.kubernetes.io/managed-by: argocd
+        app.kubernetes.io/part-of: services
+    spec:
+      project: services
+      source:
+        repoURL: https://github.com/jmuachifi/terraform.git
+        targetRevision: staging
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ index (splitList "/" path) 2 }}-staging'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: services-prod
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/jmuachifi/terraform.git
+        revision: main
+        directories:
+          - path: gitops/services/*/overlays/prod
+  template:
+    metadata:
+      name: '{{ index (splitList "/" path) 2 }}-prod'
+      labels:
+        environment: prod
+        app.kubernetes.io/managed-by: argocd
+        app.kubernetes.io/part-of: services
+    spec:
+      project: services
+      source:
+        repoURL: https://github.com/jmuachifi/terraform.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ index (splitList "/" path) 2 }}-prod'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true

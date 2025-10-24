@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: services
+  namespace: argocd
+spec:
+  description: Application workloads delivered via GitOps
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  roles:
+    - name: developers
+      description: Developers can sync their own namespaces
+      policies:
+        - p, proj:services:developers, applications, sync, services/*, allow

@@ -1,0 +1,6 @@
+controller:
+  service:
+    annotations:
+      networking.gke.io/global-static-ip-name: dev-ingress-ip
+  config:
+    server-tokens: "false"

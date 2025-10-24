@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: platform-cluster-autoscaler
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - list:
+        elements:
+          - environment:
+              name: dev
+              targetRevision: develop
+          - environment:
+              name: staging
+              targetRevision: staging
+          - environment:
+              name: prod
+              targetRevision: main
+  template:
+    metadata:
+      name: '{{environment.name}}-cluster-autoscaler'
+      labels:
+        app.kubernetes.io/managed-by: argocd
+        app.kubernetes.io/part-of: platform
+        component: cluster-autoscaler
+        environment: '{{environment.name}}'
+    spec:
+      project: platform
+      source:
+        repoURL: https://github.com/jmuachifi/terraform.git
+        targetRevision: '{{environment.targetRevision}}'
+        path: gitops/platform/cluster-autoscaler/overlays/{{environment.name}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: kube-system
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+          - PruneLast=true

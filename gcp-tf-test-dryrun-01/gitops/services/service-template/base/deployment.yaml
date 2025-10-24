@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-template
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-template
+  template:
+    metadata:
+      labels:
+        app: service-template
+        app.kubernetes.io/version: "0.1.0"
+    spec:
+      serviceAccountName: service-template
+      containers:
+        - name: api
+          image: ghcr.io/your-org/service-template:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      securityContext:
+        runAsNonRoot: true
+        fsGroup: 2000
+      terminationGracePeriodSeconds: 30

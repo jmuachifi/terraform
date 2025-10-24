@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-autoscaler-settings
+  namespace: kube-system
+data:
+  cluster-name: staging-gke
+  node-group-auto-discovery: namePrefix:gke-staging-gke-
+  max-nodes-total: "60"
+  scale-down-delay-after-add: 7m
+  scale-down-unneeded-time: 4m
+  scan-interval: 10s

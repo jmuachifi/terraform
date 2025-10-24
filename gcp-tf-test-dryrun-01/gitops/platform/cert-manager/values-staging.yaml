@@ -1,0 +1,4 @@
+extraArgs:
+  - --cluster-resource-namespace=cert-manager
+  - --default-issuer-name=letsencrypt-staging
+  - --default-issuer-kind=ClusterIssuer

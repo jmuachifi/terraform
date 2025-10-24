@@ -1,0 +1,10 @@
+controller:
+  replicaCount: 3
+  service:
+    annotations:
+      networking.gke.io/global-static-ip-name: prod-ingress-ip
+      networking.gke.io/managed-certificates: prod-managed-cert
+  config:
+    server-tokens: "false"
+    proxy-read-timeout: "120"
+    proxy-send-timeout: "120"

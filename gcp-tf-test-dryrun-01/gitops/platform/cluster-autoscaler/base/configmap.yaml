@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-autoscaler-settings
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/name: cluster-autoscaler
+    app.kubernetes.io/instance: cluster-autoscaler
+    app.kubernetes.io/part-of: cluster-autoscaler
+    app.kubernetes.io/component: configuration
+data:
+  cluster-name: placeholder
+  node-group-auto-discovery: namePrefix:gke-
+  max-nodes-total: "100"
+  scale-down-delay-after-add: 10m
+  scale-down-unneeded-time: 5m
+  scan-interval: 10s

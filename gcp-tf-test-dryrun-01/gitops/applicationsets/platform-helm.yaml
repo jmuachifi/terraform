@@ -1,0 +1,74 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: platform-helm
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - environment:
+                    name: dev
+                    targetRevision: develop
+                - environment:
+                    name: staging
+                    targetRevision: staging
+                - environment:
+                    name: prod
+                    targetRevision: main
+          - list:
+              elements:
+                - component:
+                    name: ingress-nginx
+                    chartRepo: https://kubernetes.github.io/ingress-nginx
+                    chart: ingress-nginx
+                    chartVersion: 4.11.0
+                    namespace: ingress-nginx
+                    releaseName: ingress-nginx
+                    valuesCommon: gitops/platform/ingress-nginx/values-common.yaml
+                    valuesEnvPrefix: gitops/platform/ingress-nginx/values-
+                - component:
+                    name: cert-manager
+                    chartRepo: https://charts.jetstack.io
+                    chart: cert-manager
+                    chartVersion: v1.14.5
+                    namespace: cert-manager
+                    releaseName: cert-manager
+                    valuesCommon: gitops/platform/cert-manager/values-common.yaml
+                    valuesEnvPrefix: gitops/platform/cert-manager/values-
+  template:
+    metadata:
+      name: '{{environment.name}}-{{component.name}}'
+      labels:
+        app.kubernetes.io/managed-by: argocd
+        app.kubernetes.io/part-of: platform
+        environment: '{{environment.name}}'
+        component: '{{component.name}}'
+    spec:
+      project: platform
+      sources:
+        - repoURL: '{{component.chartRepo}}'
+          chart: '{{component.chart}}'
+          targetRevision: '{{component.chartVersion}}'
+          helm:
+            releaseName: '{{component.releaseName}}'
+            valueFiles:
+              - $values/{{component.valuesCommon}}
+              - $values/{{component.valuesEnvPrefix}}{{environment.name}}.yaml
+        - repoURL: https://github.com/jmuachifi/terraform.git
+          targetRevision: '{{environment.targetRevision}}'
+          ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{component.namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+          - PruneLast=true
